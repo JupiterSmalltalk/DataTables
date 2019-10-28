@@ -10,10 +10,6 @@ BaselineOfDataTables >> baseline: spec [
 	spec
 		for: #common
 		do: [ spec
-				baseline: 'Seaside3'
-					with: [ spec
-						repository: 'github://SeasideSt/Seaside/repository';
-						loads: #('Development' 'Zinc' 'Email') ];
 				configuration: 'SortFunctions'
 					with: [ spec
 						repository: 'http://smalltalkhub.com/mc/emaringolo/SortFunctions/main';
@@ -21,13 +17,13 @@ BaselineOfDataTables >> baseline: spec [
 				baseline: 'Magritte'
 					with: [ spec
 						repository: 'github://magritte-metamodel/magritte/source';
-						loads: #('Core' 'Seaside') ].
+						loads: #('Core') ].
 			spec
 				package: 'DataTables-Core';
 				package: 'DataTables-Libraries'
 					with: [ spec requires: 'DataTables-Core' ];
 				package: 'DataTables-Magritte'
-					with: [ spec requires: #('DataTables-Core' 'DataTables-Libraries') ].
+					with: [ spec requires: #('Magritte' 'DataTables-Core' 'DataTables-Libraries') ].
 			spec
 				group: 'default'
 					with: #('CoreAndLibraries' 'Magritte' 'SortFunctions');
